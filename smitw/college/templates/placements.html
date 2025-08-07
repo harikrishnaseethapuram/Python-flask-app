@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Placements - SMITW{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h2>Placements & Career Services</h2>
+    <p>Our dedicated placement cell works tirelessly to connect students with the best career opportunities.</p>
+    
+    <div class="placement-stats">
+      <h3>Placement Statistics 2024</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h4>85%</h4>
+          <p>Placement Rate</p>
+        </div>
+        <div class="stat-card">
+          <h4>₹12 LPA</h4>
+          <p>Highest Package</p>
+        </div>
+        <div class="stat-card">
+          <h4>₹4.5 LPA</h4>
+          <p>Average Package</p>
+        </div>
+        <div class="stat-card">
+          <h4>50+</h4>
+          <p>Recruiting Companies</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="recruiters">
+      <h3>Our Top Recruiters</h3>
+      <div class="recruiter-logos">
+        <img src="{{ url_for('static', filename='images/tcs-logo.png') }}" alt="TCS">
+        <img src="{{ url_for('static', filename='images/infosys-logo.png') }}" alt="Infosys">
+        <img src="{{ url_for('static', filename='images/wipro-logo.png') }}" alt="Wipro">
+        <img src="{{ url_for('static', filename='images/techm-logo.png') }}" alt="Tech Mahindra">
+      </div>
+    </div>
+
+    <div class="training-programs">
+      <h3>Training Programs</h3>
+      <div class="program-grid">
+        <div class="program-card">
+          <h4>Technical Training</h4>
+          <ul>
+            <li>Coding Bootcamps</li>
+            <li>Domain-specific workshops</li>
+            <li>Project development</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <h4>Aptitude Training</h4>
+          <ul>
+            <li>Quantitative aptitude</li>
+            <li>Logical reasoning</li>
+            <li>Verbal ability</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <h4>Soft Skills</h4>
+          <ul>
+            <li>Communication skills</li>
+            <li>Group discussions</li>
+            <li>Interview preparation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="placement-policy">
+      <h3>Placement Policy</h3>
+      <a href="#" class="btn">Download Placement Policy PDF</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

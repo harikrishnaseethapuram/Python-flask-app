@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <style>
+        /* Admissions Page Styles */
+.admissions-banner {
+    background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), 
+                url('https://via.placeholder.com/1920x600?text=University+Admissions');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    margin-bottom: 40px;
+}
+
+.admissions-banner h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.admissions-banner p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+/* Application Process */
+.process-section {
+    padding: 60px 0;
+}
+
+.process-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.step-number {
+    background-color: var(--primary-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.process-cta {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Requirements Section */
+.requirements-section {
+    background-color: var(--light-color);
+    padding: 60px 0;
+}
+
+.requirements-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+}
+
+.requirements-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.req-tab {
+    padding: 12px 25px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.req-tab.active {
+    border-bottom-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.req-tab:not(.active):hover {
+    color: var(--primary-color);
+}
+
+.req-content {
+    display: none;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.req-content.active {
+    display: block;
+}
+
+.req-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.req-content ul {
+    margin-bottom: 20px;
+}
+
+.req-content li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.req-content li:before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+/* Deadlines Section */
+.deadlines-section {
+    padding: 60px 0;
+}
+
+.deadlines-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+.deadlines-table {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table-row {
+    display: flex;
+}
+
+.table-row.header {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+}
+
+.table-cell {
+    flex: 1;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-row:last-child .table-cell {
+    border-bottom: none;
+}
+
+.deadline-note {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-light);
+}
+
+/* Financial Aid Section */
+.financial-aid-section {
+    background-color: var(--light-color);
+    padding: 60px 0;
+}
+
+.financial-aid-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.aid-text {
+    flex: 1;
+}
+
+.aid-text h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.aid-text ul {
+    margin: 20px 0;
+}
+
+.aid-text li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.aid-text li:before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+.aid-image {
+    flex: 1;
+}
+
+.aid-image img {
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+/* Visit Section */
+.visit-section {
+    padding: 60px 0;
+}
+
+.visit-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+.visit-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.visit-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.visit-card:hover {
+    transform: translateY(-5px);
+}
+
+.visit-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.visit-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.visit-card p {
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .financial-aid-content {
+        flex-direction: column;
+    }
+    
+    .aid-image {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .admissions-banner h1 {
+        font-size: 2.2rem;
+    }
+    
+    .process-cta {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .requirements-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .req-tab {
+        padding: 10px 15px;
+    }
+    
+    .table-cell {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .admissions-banner {
+        padding: 80px 20px;
+    }
+    
+    .admissions-banner h1 {
+        font-size: 2rem;
+    }
+    
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .table-row {
+        flex-direction: column;
+    }
+    
+    .table-row.header {
+        display: none;
+    }
+    
+    .table-cell {
+        border-bottom: none;
+    }
+    
+    .table-cell:before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: var(--primary-color);
+    }
+}
+        
+     </style>
+  
+
+</head>
+<body>
+        <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> +91 8787666556</span>
+                    <span><i class="fas fa-envelope"></i> info@prestigeuniv.edu</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="data:image/jpeg;base64,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" alt="Prestige University Logo">
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                       <li><a href="{{ url_for('home') }}" >Home</a></li>
+                       <li><a href="{{ url_for('about') }}">About</a></li>
+                       <li><a href="{{ url_for('academics') }}">Academics</a></li>
+                       <li><a href="{{ url_for('admissions') }}"  class="active" >Admissions</a></li>
+                       <li><a href="{{ url_for('research') }}">Research</a></li>
+                       <li><a href="{{ url_for('campus') }}">Campus Life</a></li>
+                       <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                       <li><a href="{{ url_for('apply') }}" class="btn btn-primary" style="color: white;">Apply Now</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+  
+    <!-- Admissions Banner -->
+    <section class="admissions-banner">
+        <div class="container">
+            <h1>Admissions</h1>
+            <p>Begin your journey at Prestige University</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="admissions-container">
+        <!-- Application Process -->
+        <section class="process-section">
+            <div class="container">
+                <h2>Application Process</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Explore Programs</h3>
+                            <p>Review our academic offerings to find the right program for you.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Check Requirements</h3>
+                            <p>Verify the admission criteria for your chosen program.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Prepare Documents</h3>
+                            <p>Gather transcripts, test scores, and recommendation letters.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Submit Application</h3>
+                            <p>Complete and submit your application before the deadline.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="process-cta">
+                   <a href="{{ url_for('apply') }}" class="btn btn-primary">Apply Now</a>
+                    <a href="{{ url_for('admissions') }}" class="btn btn-outline">Application Requirements</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admission Requirements -->
+        <section class="requirements-section">
+            <div class="container">
+                <h2>Admission Requirements</h2>
+                <div class="requirements-tabs">
+                    <div class="req-tab active" data-tab="undergrad">Undergraduate</div>
+                    <div class="req-tab" data-tab="graduate">Graduate</div>
+                    <div class="req-tab" data-tab="international">International</div>
+                </div>
+                <div class="requirements-content">
+                    <div id="undergrad" class="req-content active">
+                        <h3>Undergraduate Admissions</h3>
+                        <ul>
+                            <li>Completed application form</li>
+                            <li>Official high school transcripts</li>
+                            <li>SAT/ACT scores (optional)</li>
+                            <li>Personal statement</li>
+                            <li>Application fee</li>
+                        </ul>
+                    </div>
+                    <div id="graduate" class="req-content">
+                        <h3>Graduate Admissions</h3>
+                        <ul>
+                            <li>Completed application form</li>
+                            <li>Official college transcripts</li>
+                            <li>GRE/GMAT scores (if required)</li>
+                            <li>Letters of recommendation</li>
+                            <li>Statement of purpose</li>
+                        </ul>
+                    </div>
+                    <div id="international" class="req-content">
+                        <h3>International Admissions</h3>
+                        <ul>
+                            <li>All program-specific requirements</li>
+                            <li>TOEFL/IELTS scores (if applicable)</li>
+                            <li>Financial documentation</li>
+                            <li>Passport copy</li>
+                            <li>Visa information</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deadlines -->
+        <section class="deadlines-section">
+            <div class="container">
+                <h2>Application Deadlines</h2>
+                <div class="deadlines-table">
+                    <div class="table-row header">
+                        <div class="table-cell">Term</div>
+                        <div class="table-cell">Undergraduate</div>
+                        <div class="table-cell">Graduate</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">Fall Semester</div>
+                        <div class="table-cell">June 1</div>
+                        <div class="table-cell">July 15</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">Spring Semester</div>
+                        <div class="table-cell">November 1</div>
+                        <div class="table-cell">December 1</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">Summer Session</div>
+                        <div class="table-cell">April 1</div>
+                        <div class="table-cell">Varies by program</div>
+                    </div>
+                </div>
+                <p class="deadline-note">* Some programs may have different deadlines. Please check with your department.</p>
+            </div>
+        </section>
+
+        
+
+        
+    </main>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Begin Your Journey?</h2>
+                <p>Applications for Fall 2023 are now open. Join our community of scholars and innovators.</p>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('apply') }}" class="btn btn-primary">Apply Now</a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-secondary">Request Information</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>About Prestige</h3>
+                        <ul>
+                            <li><a href="#">History & Mission</a></li>
+                            <li><a href="#">Leadership</a></li>
+                            <li><a href="#">Accreditation</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Visit Campus</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Academics</h3>
+                        <ul>
+                            <li><a href="#">Schools & Colleges</a></li>
+                            <li><a href="#">Academic Calendar</a></li>
+                            <li><a href="#">Course Catalog</a></li>
+                            <li><a href="#">Libraries</a></li>
+                            <li><a href="#">Online Learning</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Admissions</h3>
+                        <ul>
+                            <li><a href="#">Undergraduate</a></li>
+                            <li><a href="#">Graduate</a></li>
+                            <li><a href="#">International</a></li>
+                            <li><a href="#">Tuition & Fees</a></li>
+                            <li><a href="#">Financial Aid</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Student Portal</a></li>
+                            <li><a href="#">Faculty Directory</a></li>
+                            <li><a href="#">Campus Map</a></li>
+                            <li><a href="#">IT Services</a></li>
+                            <li><a href="#">Emergency Info</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Contact Us</h3>
+                        <address>
+                            Prestige University<br>
+                            123 Education Boulevard<br>
+                            University City, State 12345<br>
+                            United States<br><br>
+                            <strong>Phone:</strong> +1 (555) 123-4567<br>
+                            <strong>Email:</strong> info@prestigeuniv.edu
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container"><marquee>
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        &copy; 2003 Prestige University. All Rights Reserved.
+                    </div>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Use</a>
+                        <a href="#">Accessibility</a>
+                    </div>
+                </div>
+            </div>
+        </div></marquee>
+    </footer>
+</body>
+</html>

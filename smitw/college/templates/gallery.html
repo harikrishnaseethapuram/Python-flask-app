@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery - SMITW{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h2>SMITW Campus Gallery</h2>
+    <p>Explore glimpses of SMITW's vibrant campus life, events, labs, and modern infrastructure.</p>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="{{ url_for('static', filename='images/SMITW4.jpeg') }}" alt="SMITW Campus">
+      </div>
+      <div class="gallery-item">
+        <img src="{{ url_for('static', filename='images/SMITW3.jpeg') }}" alt="Computer Lab">
+      </div>
+      <div class="gallery-item">
+        <img src="{{ url_for('static', filename='images/SMITW1.jpeg') }}" alt="Library">
+      </div>
+      <div class="gallery-item">
+        <img src="{{ url_for('static', filename='images/SMITW2.jpeg') }}" alt="College Event">
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

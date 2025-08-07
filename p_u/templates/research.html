@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <style>
+        /* Research Page Styles */
+.research-banner {
+    background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), 
+                url('https://via.placeholder.com/1920x600?text=Research+Lab');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    margin-bottom: 40px;
+}
+
+.research-banner h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.research-banner p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+/* Research Overview */
+.research-overview {
+    padding: 60px 0;
+}
+
+.research-overview h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+.overview-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.overview-text {
+    flex: 2;
+}
+
+.overview-text p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.overview-stats {
+    flex: 1;
+    display: grid;
+    gap: 30px;
+}
+
+.stat-item {
+    background-color: var(--light-color);
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+/* Research Areas */
+.research-areas {
+    background-color: var(--light-color);
+    padding: 60px 0;
+}
+
+.research-areas h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+.areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.area-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.area-card:hover {
+    transform: translateY(-5px);
+}
+
+.area-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.area-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.area-card p {
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+/* Research News */
+.research-news {
+    padding: 60px 0;
+}
+
+.research-news h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.news-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-image img {
+    transform: scale(1.05);
+}
+
+.news-content {
+    padding: 25px;
+}
+
+.news-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.news-meta {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.news-content p {
+    margin-bottom: 20px;
+}
+
+.section-footer {
+    text-align: center;
+}
+
+/* Research Facilities */
+.research-facilities {
+    background-color: var(--light-color);
+    padding: 60px 0;
+}
+
+.research-facilities h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+.facilities-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.facilities-text {
+    flex: 1;
+}
+
+.facilities-text p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.facilities-list {
+    margin: 20px 0;
+}
+
+.facilities-list li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.facilities-list i {
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+.facilities-image {
+    flex: 1;
+}
+
+.facilities-image img {
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+/* Research Opportunities */
+.research-opportunities {
+    padding: 60px 0;
+}
+
+.research-opportunities h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+.opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.opportunity-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.opportunity-card:hover {
+    transform: translateY(-5px);
+}
+
+.opportunity-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.opportunity-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.opportunity-card p {
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .overview-content,
+    .facilities-content {
+        flex-direction: column;
+    }
+    
+    .overview-stats {
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+    }
+    
+    .facilities-image {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .research-banner h1 {
+        font-size: 2.2rem;
+    }
+    
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .overview-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .research-banner {
+        padding: 80px 20px;
+    }
+    
+    .research-banner h1 {
+        font-size: 2rem;
+    }
+    
+    .opportunities-grid {
+        grid-template-columns: 1fr;
+    }
+}
+     </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> +91 8787666556</span>
+                    <span><i class="fas fa-envelope"></i> info@prestigeuniv.edu</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="data:image/jpeg;base64,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" alt="Prestige University Logo">
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                       <li><a href="{{ url_for('home') }}" >Home</a></li>
+                       <li><a href="{{ url_for('about') }}">About</a></li>
+                       <li><a href="{{ url_for('academics') }}">Academics</a></li>
+                       <li><a href="{{ url_for('admissions') }}">Admissions</a></li>
+                       <li><a href="{{ url_for('research') }}" class="active" >Research</a></li>
+                       <li><a href="{{ url_for('campus') }}">Campus Life</a></li>
+                       <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                       <li><a href="{{ url_for('apply') }}" class="btn btn-primary" style="color: white;">Apply Now</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+
+   
+ 
+
+    <!-- Research Banner -->
+    <section class="research-banner">
+        <div class="container">
+            <h1>Research Excellence</h1>
+            <p>Advancing knowledge and solving global challenges</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="research-main">
+        <!-- Research Overview -->
+        <section class="research-overview">
+            <div class="container">
+                <h2>Research at Prestige University</h2>
+                <div class="overview-content">
+                    <div class="overview-text">
+                        <p>Prestige University is a leading research institution committed to pushing the boundaries of knowledge across disciplines. Our researchers work at the forefront of their fields, tackling some of the world's most pressing challenges.</p>
+                        <p>With state-of-the-art facilities and a collaborative research environment, we foster innovation that makes a real-world impact.</p>
+                        <a href="#" class="btn btn-primary">Research Annual Report</a>
+                    </div>
+                    <div class="overview-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">$250M+</div>
+                            <div class="stat-label">Annual Research Funding</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Research Centers</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Areas -->
+        <section class="research-areas">
+            <div class="container">
+                <h2>Key Research Areas</h2>
+                <div class="areas-grid">
+                    <div class="area-card">
+                        <i class="fas fa-dna"></i>
+                        <h3>Biomedical Sciences</h3>
+                        <p>Advancing human health through cutting-edge medical research</p>
+                        <a href="#" class="btn btn-small">Learn More</a>
+                    </div>
+                    <div class="area-card">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Environmental Studies</h3>
+                        <p>Developing solutions for a sustainable future</p>
+                        <a href="#" class="btn btn-small">Learn More</a>
+                    </div>
+                    <div class="area-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>Artificial Intelligence</h3>
+                        <p>Pioneering innovations in machine learning and robotics</p>
+                        <a href="#" class="btn btn-small">Learn More</a>
+                    </div>
+                    <div class="area-card">
+                        <i class="fas fa-atom"></i>
+                        <h3>Quantum Computing</h3>
+                        <p>Exploring the frontiers of computational science</p>
+                        <a href="#" class="btn btn-small">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research News -->
+        <section class="research-news">
+            <div class="container">
+                <h2>Recent Research Highlights</h2>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/400x250?text=Research+Breakthrough" alt="Research breakthrough">
+                        </div>
+                        <div class="news-content">
+                            <h3>Quantum Computing Breakthrough</h3>
+                            <p class="news-meta">Published: June 15, 2023 | Physics Department</p>
+                            <p>Our physicists have achieved a major milestone in quantum computing that could revolutionize data processing.</p>
+                            <a href="#" class="btn btn-outline">Read More</a>
+                        </div>
+                    </article>
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="https://via.placeholder.com/400x250?text=Medical+Discovery" alt="Medical discovery">
+                        </div>
+                        <div class="news-content">
+                            <h3>New Cancer Treatment Developed</h3>
+                            <p class="news-meta">Published: May 28, 2023 | Medical School</p>
+                            <p>Researchers at our medical school have developed a promising new approach to treating aggressive cancers.</p>
+                            <a href="#" class="btn btn-outline">Read More</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="section-footer">
+                    <a href="#" class="btn btn-primary">View All Research News</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Facilities -->
+        <section class="research-facilities">
+            <div class="container">
+                <h2>Research Facilities</h2>
+                <div class="facilities-content">
+                    <div class="facilities-text">
+                        <p>Prestige University provides world-class research facilities to support innovative work across disciplines. Our centers and labs are equipped with cutting-edge technology and staffed by expert personnel.</p>
+                        <ul class="facilities-list">
+                            <li><i class="fas fa-check"></i> Advanced Materials Research Center</li>
+                            <li><i class="fas fa-check"></i> Biomedical Innovation Lab</li>
+                            <li><i class="fas fa-check"></i> Climate Change Research Institute</li>
+                            <li><i class="fas fa-check"></i> Data Science Supercomputing Facility</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Explore All Facilities</a>
+                    </div>
+                    <div class="facilities-image">
+                        <img src="https://via.placeholder.com/500x350?text=Research+Lab" alt="Research laboratory">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Opportunities -->
+        <section class="research-opportunities">
+            <div class="container">
+                <h2>Research Opportunities</h2>
+                <div class="opportunities-grid">
+                    <div class="opportunity-card">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>Undergraduate Research</h3>
+                        <p>Hands-on research experiences for undergraduate students across all disciplines.</p>
+                        <a href="#" class="btn btn-small">Learn More</a>
+                    </div>
+                    <div class="opportunity-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Graduate Fellowships</h3>
+                        <p>Funding and support for graduate students pursuing research degrees.</p>
+                        <a href="#" class="btn btn-small">Learn More</a>
+                    </div>
+                    <div class="opportunity-card">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Faculty Positions</h3>
+                        <p>Join our community of world-class researchers and scholars.</p>
+                        <a href="#" class="btn btn-small">View Openings</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+                  
+      
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Begin Your Journey?</h2>
+                <p>Applications for Fall 2023 are now open. Join our community of scholars and innovators.</p>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('apply') }}" class="btn btn-primary">Apply Now</a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-secondary">Request Information</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>About Prestige</h3>
+                        <ul>
+                            <li><a href="#">History & Mission</a></li>
+                            <li><a href="#">Leadership</a></li>
+                            <li><a href="#">Accreditation</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Visit Campus</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Academics</h3>
+                        <ul>
+                            <li><a href="#">Schools & Colleges</a></li>
+                            <li><a href="#">Academic Calendar</a></li>
+                            <li><a href="#">Course Catalog</a></li>
+                            <li><a href="#">Libraries</a></li>
+                            <li><a href="#">Online Learning</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Admissions</h3>
+                        <ul>
+                            <li><a href="#">Undergraduate</a></li>
+                            <li><a href="#">Graduate</a></li>
+                            <li><a href="#">International</a></li>
+                            <li><a href="#">Tuition & Fees</a></li>
+                            <li><a href="#">Financial Aid</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Student Portal</a></li>
+                            <li><a href="#">Faculty Directory</a></li>
+                            <li><a href="#">Campus Map</a></li>
+                            <li><a href="#">IT Services</a></li>
+                            <li><a href="#">Emergency Info</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Contact Us</h3>
+                        <address>
+                            Prestige University<br>
+                            123 Education Boulevard<br>
+                            University City, State 12345<br>
+                            United States<br><br>
+                            <strong>Phone:</strong> +1 (555) 123-4567<br>
+                            <strong>Email:</strong> info@prestigeuniv.edu
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container"><marquee>
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        &copy; 2003 Prestige University. All Rights Reserved.
+                    </div>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Use</a>
+                        <a href="#">Accessibility</a>
+                    </div>
+                </div>
+            </div>
+        </div></marquee>
+    </footer>
+</body>
+</html>

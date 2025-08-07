@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}SMITW{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div id="branding">
+        <h1><span class="highlight">Sri Mittapalli</span> Institute of Technology For Women</h1>
+      </div>
+      <p>Established in 2008 with an aim to accomplish distinction in Engineering and Technological pursuits</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('home') }}" {% if request.path == '/' %}class="active"{% endif %}>
+        <i class="fas fa-home"></i> Home
+      </a></li>
+      <li><a href="{{ url_for('about') }}" {% if request.path == '/about' %}class="active"{% endif %}>
+        <i class="fas fa-info-circle"></i> About
+      </a></li>
+      <li><a href="{{ url_for('courses') }}" {% if request.path == '/courses' %}class="active"{% endif %}>
+        <i class="fas fa-book"></i> Courses
+      </a></li>
+      <li><a href="{{ url_for('admissions') }}" {% if request.path == '/admissions' %}class="active"{% endif %}>
+        <i class="fas fa-user-graduate"></i> Admissions
+      </a></li>
+      <li><a href="{{ url_for('placements') }}" {% if request.path == '/placements' %}class="active"{% endif %}>
+        <i class="fas fa-briefcase"></i> Placements
+      </a></li>
+      <li><a href="{{ url_for('gallery') }}" {% if request.path == '/gallery' %}class="active"{% endif %}>
+        <i class="fas fa-images"></i> Gallery
+      </a></li>
+      <li><a href="{{ url_for('events') }}" {% if request.path == '/events' %}class="active"{% endif %}>
+        <i class="fas fa-calendar-alt"></i> Events
+      </a></li>
+      <li><a href="{{ url_for('map') }}" {% if request.path == '/map' %}class="active"{% endif %}>
+        <i class="fas fa-map-marked-alt"></i> Map
+      </a></li>
+      <li><a href="{{ url_for('contact') }}" {% if request.path == '/contact' %}class="active"{% endif %}>
+        <i class="fas fa-envelope"></i> Contact
+      </a></li>
+    </ul>
+  </nav>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('admissions') }}">Admissions</a></li>
+          <li><a href="{{ url_for('courses') }}">Courses</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Thummalapalem, Guntur, AP - 522508</p>
+        <p><i class="fas fa-phone"></i> +91 9292959295</p>
+        <p><i class="fas fa-envelope"></i> smitw08@gmail.com</p>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Sri Mittapalli Institute of Technology For Women. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

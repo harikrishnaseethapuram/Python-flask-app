@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <h1>Shaping Future Engineers</h1>
+    <p>Affiliated to JNTU Kakinada and approved by AICTE, SMITW offers world-class technical education with state-of-the-art infrastructure and industry-aligned curriculum.</p>
+    <a href="{{ url_for('admissions') }}" class="btn">Apply Now</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>About SMITW</h2>
+    <p>Sri Mittapalli Institute Of Technology For Women (SMITW) is a premier engineering college located in Thummalapalem, Guntur District, Andhra Pradesh. Established in 2008.</p>
+    <p>Our campus spreads over 5 acres with modern laboratories, digital classrooms, a central library with over 50,000 volumes, and excellent sports facilities.</p>
+    <a href="{{ url_for('about') }}" class="btn">Learn More</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Our Courses</h2>
+    <div class="course-grid">
+      <div class="course-card">
+        <h3>Computer Science & Engineering</h3>
+        <p>B.Tech and M.Tech programs with specializations in AI, Data Science and Cyber Security</p>
+      </div>
+      <div class="course-card">
+        <h3>Electronics & Communication</h3>
+        <p>Comprehensive programs with IoT and Embedded Systems focus</p>
+      </div>
+    </div>
+    <a href="{{ url_for('courses') }}" class="btn">View All Courses</a>
+  </div>
+</section>
+{% endblock %}

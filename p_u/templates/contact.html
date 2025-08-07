@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Us - Prestige University</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <style>
+        /* Reset and Base */
+.contact-banner {
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    margin-bottom: 40px;
+}
+
+.contact-banner h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.contact-banner p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+.contact-container {
+    padding: 60px 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.department-contacts {
+    margin-top: 60px;
+}
+
+.department-contacts h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+.departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.department-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.department-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.department-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.department-card p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.department-card i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    width: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .map-container {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-banner h1 {
+        font-size: 2.2rem;
+    }
+    
+    .contact-banner {
+        padding: 80px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-banner h1 {
+        font-size: 2rem;
+    }
+    
+    .contact-banner p {
+        font-size: 1.1rem;
+    }
+} page */
+        /* Contact Page Styles */
+.contact-banner {
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    margin-bottom: 40px;
+}
+
+.contact-banner h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.contact-banner p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+.contact-container {
+    padding: 60px 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.department-contacts {
+    margin-top: 60px;
+}
+
+.department-contacts h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+}
+
+.departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.department-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.department-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.department-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.department-card p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.department-card i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    width: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .map-container {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-banner h1 {
+        font-size: 2.2rem;
+    }
+    
+    .contact-banner {
+        padding: 80px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-banner h1 {
+        font-size: 2rem;
+    }
+    
+    .contact-banner p {
+        font-size: 1.1rem;
+    }
+}
+        .contact-banner {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), 
+                        url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            height: 100%;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 51, 102, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-form .btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.1rem;
+        }
+        
+        .office-hours {
+            margin-top: 30px;
+        }
+        
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .hours-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .hours-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .hours-table td:first-child {
+            font-weight: 600;
+        }
+        
+        .social-contact {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-contact a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-contact a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+  
+        
+    </style>
+</head>
+<body>
+  <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> +91 8787666556</span>
+                    <span><i class="fas fa-envelope"></i> info@prestigeuniv.edu</span>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="data:image/jpeg;base64,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" alt="Prestige University Logo">
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                       <li><a href="{{ url_for('home') }}" >Home</a></li>
+                       <li><a href="{{ url_for('about') }}">About</a></li>
+                       <li><a href="{{ url_for('academics') }}">Academics</a></li>
+                       <li><a href="{{ url_for('admissions') }}">Admissions</a></li>
+                       <li><a href="{{ url_for('research') }}">Research</a></li>
+                       <li><a href="{{ url_for('campus') }}">Campus Life</a></li>
+                       <li><a href="{{ url_for('contact') }}" class="active">Contact</a></li>
+                       <li><a href="{{ url_for('apply') }}" class="btn btn-primary" style="color: white;">Apply Now</a></li>
+
+                    </ul>
+                </nav>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+  <!-- Contact Banner -->
+    <section class="contact-banner">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We're here to answer your questions</p>
+        </div>
+    </section>
+
+  
+        
+    <!-- Main Content -->
+    <main class="contact-container">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h2>Visit Our Campus</h2>
+                        <address>
+                            Prestige University<br>
+                            123 Education Boulevard<br>
+                            University City, State 12345<br>
+                            United States
+                        </address>
+                        
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h2>Phone & Email</h2>
+                        <p>
+                            <strong>General Inquiries:</strong> (555) 123-4567<br>
+                            <strong>Admissions Office:</strong> (555) 123-4568<br>
+                            <strong>Email:</strong> info@prestigeuniv.edu
+                        </p>
+                        
+                        <div class="contact-icon">
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <h2>Office Hours</h2>
+                        <div class="office-hours">
+                            <table class="hours-table">
+                                <tr>
+                                    <td>Monday - Friday</td>
+                                    <td>8:00 AM - 6:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Saturday</td>
+                                    <td>9:00 AM - 1:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday</td>
+                                    <td>Closed</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="social-contact">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <div class="contact-info-card">
+                        <h2>Send Us a Message</h2>
+                        <p>Have questions? Fill out the form below and we'll get back to you as soon as possible.</p>
+                        
+                        <form>
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Subject">
+                            </div>
+                            <div class="form-group">
+                                <textarea placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Campus Map -->
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1841334044047!2d-73.98757492439123!3d40.75802887138726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1688755422245!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+            <!-- Department Contacts -->
+            <div class="department-contacts">
+                <h2>Contact Specific Departments</h2>
+                <div class="departments-grid">
+                    <div class="department-card">
+                        <h3>Admissions Office</h3>
+                        <p><i class="fas fa-phone"></i> (555) 123-4568</p>
+                        <p><i class="fas fa-envelope"></i> admissions@prestigeuniv.edu</p>
+                    </div>
+                    <div class="department-card">
+                        <h3>Financial Aid</h3>
+                        <p><i class="fas fa-phone"></i> (555) 123-4569</p>
+                        <p><i class="fas fa-envelope"></i> financialaid@prestigeuniv.edu</p>
+                    </div>
+                    <div class="department-card">
+                        <h3>Registrar's Office</h3>
+                        <p><i class="fas fa-phone"></i> (555) 123-4570</p>
+                        <p><i class="fas fa-envelope"></i> registrar@prestigeuniv.edu</p>
+                    </div>
+                    <div class="department-card">
+                        <h3>Student Services</h3>
+                        <p><i class="fas fa-phone"></i> (555) 123-4571</p>
+                        <p><i class="fas fa-envelope"></i> studentservices@prestigeuniv.edu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+ 
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>About Prestige</h3>
+                        <ul>
+                            <li><a href="#">History & Mission</a></li>
+                            <li><a href="#">Leadership</a></li>
+                            <li><a href="#">Accreditation</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Visit Campus</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Academics</h3>
+                        <ul>
+                            <li><a href="#">Schools & Colleges</a></li>
+                            <li><a href="#">Academic Calendar</a></li>
+                            <li><a href="#">Course Catalog</a></li>
+                            <li><a href="#">Libraries</a></li>
+                            <li><a href="#">Online Learning</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Admissions</h3>
+                        <ul>
+                            <li><a href="#">Undergraduate</a></li>
+                            <li><a href="#">Graduate</a></li>
+                            <li><a href="#">International</a></li>
+                            <li><a href="#">Tuition & Fees</a></li>
+                            <li><a href="#">Financial Aid</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Student Portal</a></li>
+                            <li><a href="#">Faculty Directory</a></li>
+                            <li><a href="#">Campus Map</a></li>
+                            <li><a href="#">IT Services</a></li>
+                            <li><a href="#">Emergency Info</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h3>Contact Us</h3>
+                        <address>
+                            Prestige University<br>
+                            123 Education Boulevard<br>
+                            University City, State 12345<br>
+                            United States<br><br>
+                            <strong>Phone:</strong> +1 (555) 123-4567<br>
+                            <strong>Email:</strong> info@prestigeuniv.edu
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container"><marquee>
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        &copy; 2003 Prestige University. All Rights Reserved.
+                    </div>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Use</a>
+                        <a href="#">Accessibility</a>
+                    </div>
+                </div>
+            </div>
+        </div></marquee>
+    </footer>
+</body>
+</html>
